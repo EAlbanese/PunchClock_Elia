@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
-  "author": "S-Senn <severin@senn-online.ch>",
+  "author": "Elia Albanese",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
-    "dev-sse": "cross-env PROFILE=sse npm run dev",
+    "dev-ela": "cross-env PROFILE=ela npm run dev",
     "build-prod": "cross-env PROFILE=prod npm run build",
     "build": "quasar build",
     "clean": "quasar clean",
