@@ -4,24 +4,21 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Time {
+public class Timezone {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Boolean checkIn;
+    private LocalDateTime checkIn;
 
     @Column(nullable = false)
     private LocalDateTime checkOut;
 
     @ManyToOne
-    @JoinColumn(name = "project_id",nullable = false)
-    private Project project;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+    @JoinColumn(name = "category_id",nullable = false)
+    private Category category;
 
     public Long getId() {
         return id;
@@ -31,11 +28,11 @@ public class Time {
         this.id = id;
     }
 
-    public Boolean getCheckIn() {
+    public LocalDateTime getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Boolean checkIn) {
+    public void setCheckIn(LocalDateTime checkIn) {
         this.checkIn = checkIn;
     }
 
@@ -47,19 +44,7 @@ public class Time {
         this.checkOut = checkOut;
     }
 
-    public Project getProject() {
-        return project;
-    }
+    public void setCategory(Category c){ this.category = c; }
 
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public Category getCategory() { return this.category; }
 }
