@@ -9,13 +9,33 @@ const routes = [
 
   },
   {
-    path: '/',
-    component: () => import('layouts/Empty.vue'),
+    path: '/account',
+    component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'Login', name: "Login", component: () => import('pages/Login.vue') }
+      { path: '', name: "Login", component: () => import('pages/Login.vue') }
     ]
   },
-
+{
+    path: '/user',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: "User", component: () => import('pages/User.vue') }
+    ]
+  },
+  {
+    path: '/home',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: "Dashboard", component: () => import('pages/Dashboard.vue') }
+    ]
+  },
+  {
+    path: '/task',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: "Task", component: () => import('pages/Task.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
