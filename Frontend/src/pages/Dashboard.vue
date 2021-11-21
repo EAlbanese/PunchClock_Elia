@@ -12,32 +12,46 @@
 <script>
 import { defineComponent } from 'vue'
 
+const columns = [ 
+        {
+            name: 'username',
+            label: 'Name',
+            field: 'name',
+            required: true,
+            align: 'left',
+            sortable: true,
+            sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10),
+            sortOrder: 'ad',
+            format: (val, row) => `${val}%`,
+            style: 'width: 500px',
+            classes: 'my-special-class',
+            headerStyle: 'width: 500px',
+            headerClasses: 'my-special-class'
+        },
+        { name: 'taskname', label: 'Taskname', field: 'taskname'},
+        { name: 'checkIn', label: 'Start date', field: 'checkIn'},
+        { name: 'checkOut', label: 'End date', field: 'checkOut' },
+        { name: 'edit', label: 'Edit', field: 'edit' },
+        { name: 'delete', label: 'Delete', field: 'delete' }
+    ]
+
+const rows = [
+        {
+            username: 'Elia Albanse',
+            taskname: 'Task1',
+            checkIn: '12.05.2021',
+            checkOut: '13.05.2021',
+            edit: 'edit button',
+            delete: 'delete button'
+        }
+    ]
+
 export default defineComponent({
     data() {
         return {
             checkin: "null",
-            columns: [ 
-                {
-                    name: 'desc',
-                    label: 'Name',
-                    field: 'name',
-                    required: true,
-                    align: 'left',
-                    sortable: true,
-                    sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10),
-                    sortOrder: 'ad',
-                    format: (val, row) => `${val}%`,
-                    style: 'width: 500px',
-                    classes: 'my-special-class',
-                    headerStyle: 'width: 500px',
-                    headerClasses: 'my-special-class'
-                },
-                { name: 'taskname', label: 'Taskname', field: 'taskname'},
-                { name: 'checkIn', label: 'Start date', field: 'checkIn'},
-                { name: 'checkOut', label: 'End date', field: 'checkOut' },
-                { name: 'edit', label: 'Edit', field: 'edit' },
-                { name: 'delete', label: 'Delete', field: 'delete' }
-            ]   
+            columns,
+            rows
         }
     },
     mounted() {

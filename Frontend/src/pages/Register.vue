@@ -1,21 +1,23 @@
 <template>
 <q-page>
     <div class="LoginPage">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <div style="max-width: 300px;" class="q-mx-auto">
             <form-wrapper :validator="$v">
-                <form-group name="username">
-                    <q-input v-model="username" label="E-Mail" slot-scope="{attrs}" v-bind="attrs" /><br />
+                <form-group name="name">
+                    <q-input v-model="firstname" label="Firstname" slot-scope="{attrs}" v-bind="attrs" /><br />
+                    <q-input v-model="lastname" label="Lastname" slot-scope="{attrs}" v-bind="attrs" /><br />
                 </form-group>
 
-                <form-group name="password">
-                    <q-input v-model="password" type="password" label="Password" slot-scope="{attrs}" v-bind="attrs" />
+                <form-group name="forlogin">
+                    <q-input v-model="email" label="E-Mail" slot-scope="{attrs}" v-bind="attrs" />
+                    <q-input v-model="password" type="password" label="Password"  slot-scope="{attrs}" v-bind="attrs" /><br />
                 </form-group>
             </form-wrapper>
         </div>
         <div style="padding-top: 10px;">
-            <q-btn class="q-mt-xl" style="margin-right: 10px;" color="primary" label="Login" @click="submitLogin" no-caps />
-            <q-btn class="q-mt-xl" color="dark" label="Register" unelevated to="/register" @click="goToRegister" />
+            <q-btn class="q-mt-xl" style="margin-right: 10px;" color="primary" label="Register" @click="submitLogin" no-caps />
+            <q-btn class="q-mt-xl" color="dark" label="Back to Login" unelevated to="/" @click="goToLogin" />
         </div>
     </div>
     
@@ -31,6 +33,8 @@ export default {
     name: 'Loginpage',
     data() {
         return {
+            firstname: "",
+            lastname: "",
             email: "",
             password: "",
         }
@@ -53,6 +57,8 @@ export default {
             }
             console.log("asd")
             let res = await axios.post('/home', {
+                FirstName: this.firstname,
+                LastName: this.lastname,
                 Email: this.email,
                 Password: this.password
             })
