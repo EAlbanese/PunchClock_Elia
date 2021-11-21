@@ -16,9 +16,9 @@ public class Timezone {
     @Column(nullable = false)
     private LocalDateTime checkOut;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false)
-    private Category category;
+//    @ManyToOne
+//    @JoinColumn(name = "category_id",nullable = true)
+//    private Category category;
 
     public Long getId() {
         return id;
@@ -44,7 +44,7 @@ public class Timezone {
         this.checkOut = checkOut;
     }
 
-    public void setCategory(Category c){ this.category = c; }
-
-    public Category getCategory() { return this.category; }
+//    public void setCategory(Category c){ this.category = c; }
+//
+//    public Category getCategory() { return this.category; }
 }

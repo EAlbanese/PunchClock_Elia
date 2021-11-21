@@ -15,9 +15,9 @@ public class Category {
     private String name;
 
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Timezone> timezones;
+//    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
+//    @JsonIgnore
+//    private List<Timezone> timezones;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Category {
         this.name = name;
     }
 
-    public List<Timezone> getTimezones() {
-        return this.timezones;
-    }
-    public void setTimezones(List<Timezone> timezones) {
-        this.timezones = timezones;
-    }
+//    public List<Timezone> getTimezones() {
+//        return this.timezones;
+//    }
+//    public void setTimezones(List<Timezone> timezones) {
+//        this.timezones = timezones;
+//    }
 
 }

@@ -3,12 +3,13 @@ package ch.zli.m223.punchclock.service;
 import ch.zli.m223.punchclock.domain.Task;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@ApplicationScoped
+@RequestScoped
 public class TaskService {
     @Inject
     private EntityManager taskManager;
