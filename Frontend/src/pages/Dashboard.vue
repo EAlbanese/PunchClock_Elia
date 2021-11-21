@@ -1,7 +1,7 @@
 <template>
 <q-page>
     <h2 style="text-align:center; padding-top: 2px">Dashboard</h2>
-    <div style="padding-top 10px">
+    <div style="padding-top 10px; padding-left: 10%; padding-right: 10%;">
         <div class="q-pa-md">
             <q-table title="" :rows="rows" :columns="columns" row-key="name" />
         </div>
@@ -32,8 +32,8 @@ export default defineComponent({
                     headerStyle: 'width: 500px',
                     headerClasses: 'my-special-class'
                 },
-                { name: 'taskname', label: 'Taskname', field: 'taskname', sortable: true },
-                { name: 'checkIn', label: 'Start date', field: 'checkIn', sortable: true },
+                { name: 'taskname', label: 'Taskname', field: 'taskname'},
+                { name: 'checkIn', label: 'Start date', field: 'checkIn'},
                 { name: 'checkOut', label: 'End date', field: 'checkOut' },
                 { name: 'edit', label: 'Edit', field: 'edit' },
                 { name: 'delete', label: 'Delete', field: 'delete' }
