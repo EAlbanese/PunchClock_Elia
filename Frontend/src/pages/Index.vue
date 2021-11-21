@@ -3,7 +3,7 @@
     <div class="LoginPage">
         <h1>Login</h1>
         <div style="max-width: 300px;" class="q-mx-auto">
-            <form-wrapper :validator="$v">
+            <form-wrapper>
                 <form-group name="username">
                     <q-input v-model="username" label="E-Mail" slot-scope="{attrs}" v-bind="attrs" /><br />
                 </form-group>
@@ -26,6 +26,7 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 import { Notify } from 'quasar'
+import axios, * as others from 'axios';
 
 export default {
     name: 'Loginpage',
@@ -47,12 +48,8 @@ export default {
     },*/
     methods: {
         async submitLogin() {
-            this.$v.$touch()
-            if (this.$v.$invalid) {
-                return
-            }
             console.log("asd")
-            let res = await axios.post('/home', {
+            let res = await axios.post('/user', {
                 Email: this.email,
                 Password: this.password
             })
@@ -71,13 +68,14 @@ export default {
                 $store.dispatch("auth/logout");
                 $store.dispatch("auth/login", {
                     jwt: token
+
                 });
                 Notify.create({
                     position: 'top',
                     type: 'positive',
                     message: 'login sucssesd'
                 })
-                this.$router.push('/')
+                this.$router.push('/home')
             }
         },
         goToUser(){

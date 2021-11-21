@@ -17,7 +17,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import ch.zli.m223.punchclock.domain.Timezone;
 import ch.zli.m223.punchclock.service.TimezoneService;
 
-@Path("/task")
+@Path("/timezone")
 public class TimezoneController {
 
     @Inject

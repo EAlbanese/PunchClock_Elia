@@ -1,11 +1,13 @@
 package ch.zli.m223.punchclock.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     private String firstname;
@@ -16,9 +18,8 @@ public class User {
 
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "task_id",nullable = false)
-    private Task task;
+    @OneToMany(mappedBy = "user")
+    private List<Task> task;
 
     public Long getId() {
         return id;
@@ -50,6 +51,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setTask(Task task){ this.task = task; }
-    public Task getTask() { return this.task; }
+    public void setTask(List<Task> task){ this.task = task; }
+    public List<Task> getTask() { return this.task; }
+
+    public User (Long id, String firstname, String lastname, String email, String password) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {
+        super();
+    }
 }

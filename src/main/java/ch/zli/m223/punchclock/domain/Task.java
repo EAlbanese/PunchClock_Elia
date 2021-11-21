@@ -8,14 +8,15 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String taskname;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "entry_id",nullable = false)
+    @JoinColumn(name = "timezone_id",nullable = true)
     private Timezone timezone;
 
     public Long getId(){
