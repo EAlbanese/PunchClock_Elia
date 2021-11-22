@@ -17,7 +17,7 @@ export default boot(({ app, store }) => {
       return response;
     },
     (error) => {
-      return Promise.resolve(response);
+      return Promise.resolve(error);
     }
   );
 
