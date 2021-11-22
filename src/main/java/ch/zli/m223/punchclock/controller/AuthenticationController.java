@@ -19,8 +19,8 @@ public class AuthenticationController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public String Login(User user){
-        if(authenticationService.CheckIfUserExists(user)){
-            return authenticationService.GenerateValidJwtToken(user.getEmail());
+        if(authenticationService.checkHashedPassword(user.getEmail(), user.getPassword())){
+            return authenticationService.GenerateValidJwtToken(authenticationService.getUserByEmail(user.getEmail()));
         }else{
             throw new NotAuthorizedException("");
         }
