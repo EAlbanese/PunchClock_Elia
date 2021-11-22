@@ -5,7 +5,7 @@
         <div style="max-width: 300px;" class="q-mx-auto">
             <form-wrapper>
                 <form-group name="username">
-                    <q-input v-model="username" label="E-Mail" slot-scope="{attrs}" v-bind="attrs" /><br />
+                    <q-input v-model="email" label="E-Mail" slot-scope="{attrs}" v-bind="attrs" /><br />
                 </form-group>
 
                 <form-group name="password">
@@ -26,7 +26,6 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 import { Notify } from 'quasar'
-import axios, * as others from 'axios';
 
 export default {
     name: 'Loginpage',
@@ -48,13 +47,14 @@ export default {
     },*/
     methods: {
         async submitLogin() {
-            console.log("asd")
-            let res = await axios.post('/user', {
-                Email: this.email,
-                Password: this.password
+            this.$store.dispatch("auth/logout");
+            axios.defaults.headers.common["authorization"] = null;
+            let res = await axios.post('/auth/Login', {
+                email: this.email,
+                password: this.password
             })
             if (res.status === 200) {
-                const token = res.data.token
+                const token = res.data
                 if (token == undefined) {
                     Notify.create({
                         position: 'top',
@@ -65,8 +65,8 @@ export default {
                     this.$v.$reset()
                     return;
                 }
-                $store.dispatch("auth/logout");
-                $store.dispatch("auth/login", {
+                    dispatch("auth/logout");
+                this.$store.dispatch("auth/login", {
                     jwt: token
 
                 });
@@ -75,8 +75,8 @@ export default {
                     type: 'positive',
                     message: 'login sucssesd'
                 })
-                this.$router.push('/home')
             }
+            this.$router.push('/user')
         },
         goToUser(){
             this.$$router.push('/user')
