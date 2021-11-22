@@ -16,7 +16,9 @@
           Punchclock
         </q-toolbar-title>
 
-      
+        <div v-if="$store.getters['auth/authorized']">
+          <q-btn flat label="Log Out" no-caps @click="logout"></q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -93,7 +95,11 @@ export default defineComponent({
     async getUser(){
       var res = await axios.get("User/1");
 
-    }
+    },
+     logout() {
+      this.$store.dispatch("auth/logout");
+      this.$router.push("/Login");
+    },
   }
 })
 </script>
