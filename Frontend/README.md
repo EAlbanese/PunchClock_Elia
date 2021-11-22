@@ -13,5 +13,7 @@ npm run dev-ela
 ```
 
 ## Default Benutzer
-Sie können sich mit einem beliebigen benutzer welcher auf der DB ist einloggen, oder Sie erstellen einen neuen User indem Sie auf den "Register-Button" drücken.
+Das Login für den Default Benutzer ist wie folgt:
+E-Mail: default@user.com
+Passwort: user123
 
