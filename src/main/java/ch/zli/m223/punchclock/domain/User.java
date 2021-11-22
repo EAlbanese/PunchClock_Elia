@@ -1,14 +1,7 @@
 package ch.zli.m223.punchclock.domain;
 
 import javax.persistence.*;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.List;
-
-import static ch.zli.m223.punchclock.service.AuthenticationService.hashPassword;
-import static java.util.Objects.hash;
 
 @Entity
 public class User {
@@ -56,7 +49,7 @@ public class User {
         return email;
     }
 
-    public void setEmail() {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -65,7 +58,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = hashPassword(password);
+        this.password = password;
     }
 
     public void setTask(List<Task> task) {
@@ -88,20 +81,4 @@ public class User {
         super();
     }
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(hash("helloadfsfasdf"));
-
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[250];
-        random.nextBytes(salt);
-
-        MessageDigest md = MessageDigest.getInstance("SHA-512");
-        md.update(salt);
-
-        byte[] hashedPassword = md.digest("helloadfsfasfasfddasfasdfsdasdf".getBytes(StandardCharsets.UTF_8));
-        System.out.println(hashedPassword.toString());
-
-
-
-    }
 }
