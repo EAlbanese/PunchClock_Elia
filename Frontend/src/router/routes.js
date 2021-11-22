@@ -11,17 +11,6 @@ const routes = [{
 
     },
     {
-        path: '/account',
-        component: () =>
-            import ('layouts/MainLayout.vue'),
-        children: [{
-            path: '',
-            name: "Login",
-            component: () =>
-                import ('pages/Login.vue')
-        }]
-    },
-    {
         path: '/user',
         component: () =>
             import ('layouts/MainLayout.vue'),
@@ -49,7 +38,7 @@ const routes = [{
             import ('layouts/MainLayout.vue'),
         children: [{
             path: '',
-            name: "Register",
+            name: "Task",
             component: () =>
                 import ('pages/Task.vue')
         }]
@@ -60,9 +49,20 @@ const routes = [{
             import ('layouts/MainLayout.vue'),
         children: [{
             path: '',
-            name: "Task",
+            name: "Register",
             component: () =>
                 import ('pages/Register.vue')
+        }]
+    },
+    {
+        path: '/edit',
+        component: () =>
+            import ('layouts/MainLayout.vue'),
+        children: [{
+            path: '',
+            name: "Task",
+            component: () =>
+                import ('pages/UserEdit.vue')
         }]
     },
     // Always leave this as last one,
