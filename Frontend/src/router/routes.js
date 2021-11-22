@@ -60,7 +60,7 @@ const routes = [{
             import ('layouts/MainLayout.vue'),
         children: [{
             path: '',
-            name: "Task",
+            name: "Edit",
             component: () =>
                 import ('pages/UserEdit.vue')
         }]

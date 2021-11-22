@@ -16,17 +16,9 @@ const columns = [
         {
             name: 'username',
             label: 'Name',
-            field: 'name',
+            field: 'username',
             required: true,
             align: 'left',
-            sortable: true,
-            sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10),
-            sortOrder: 'ad',
-            format: (val, row) => `${val}%`,
-            style: 'width: 500px',
-            classes: 'my-special-class',
-            headerStyle: 'width: 500px',
-            headerClasses: 'my-special-class'
         },
         { name: 'taskname', label: 'Taskname', field: 'taskname'},
         { name: 'checkIn', label: 'Start date', field: 'checkIn'},
@@ -35,26 +27,43 @@ const columns = [
         { name: 'delete', label: 'Delete', field: 'delete' }
     ]
 
-const rows = [
-        {
-            username: 'Elia Albanse',
-            taskname: 'Task1',
-            checkIn: '12.05.2021',
-            checkOut: '13.05.2021',
-            edit: 'edit button',
-            delete: 'delete button'
-        }
-    ]
-
 export default defineComponent({
     data() {
         return {
             checkin: "null",
             columns,
-            rows
+            rows:[]
         }
     },
     mounted() {
+        this.getUserById()
+    },
+    methods:{
+        async getUserById(){
+            console.log("test");
+            let res = await axios.get("/user/"+this.GetJWTData().upn)
+            this.user = res.data
+        },
+        async getAllTask(){
+            let res = await axios.get("/task")
+            this.rows = res.data
+        },
+        GetJWTData() {
+            const store = useStore()
+            var token = null
+            var jwt = this.$store.getters["auth/JWT"]
+            if (jwt !== null) {
+                var base64Url = jwt.split('.')[1]
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+                token = JSON.parse(window.atob(base64))
+            }
+            return token;
+        },
+        async deleteTask(){
+            let res = await axios.delete("/user/" + this.GetJWTData().upn)
+            this.user = null
+            this.$router.push('/')  
+        }
     }
 }) 
 </script>
