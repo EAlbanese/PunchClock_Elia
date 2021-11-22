@@ -41,12 +41,12 @@ public class Task {
         this.taskname = taskname;
     }
 
-    public void setTimezonet(Timezone timezone) {
-        this.timezone = timezone;
-    }
-
     public Timezone getTimezone() {
         return this.timezone;
+    }
+
+    public void setTimezonet(Timezone timezone) {
+        this.timezone = timezone;
     }
 
     public void setUser(User user) {
