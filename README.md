@@ -19,3 +19,10 @@ Datenquelle: jdbc:h2:mem:punchclock
 Benutzername: zli
 Passwort: zli
 
+## Datenimport
+Im "import.sql" file sind die Testdaten vorhanden. 
+
+### Was wird mitgegeben:
+1. 2x 1 User erstellt
+2. 1x 1 Default User erstellt
+
