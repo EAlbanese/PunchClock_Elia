@@ -65,7 +65,7 @@ export default {
                     this.$v.$reset()
                     return;
                 }
-                    dispatch("auth/logout");
+                this.$store.dispatch("auth/logout");
                 this.$store.dispatch("auth/login", {
                     jwt: token
 
