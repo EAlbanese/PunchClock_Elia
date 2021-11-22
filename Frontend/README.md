@@ -1,26 +1,17 @@
 # Quasar App (frontend)
 
-A Quasar Framework app
 
-## Install the dependencies
+
+## Frontend Starten mit Visual Studio
+1.
 ```bash
 npm install
 ```
-
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+2.
 ```bash
-quasar dev
+npm run dev-ela
 ```
 
-### Lint the files
-```bash
-npm run lint
-```
+## Default Benutzer
+Sie können sich mit einem beliebigen benutzer welcher auf der DB ist einloggen, oder Sie erstellen einen neuen User indem Sie auf den "Register-Button" drücken.
 
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
