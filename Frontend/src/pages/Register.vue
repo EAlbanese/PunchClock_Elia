@@ -16,18 +16,17 @@
             </form>
         </div>
         <div style="padding-top: 10px;">
-            <q-btn class="q-mt-xl" style="margin-right: 10px;" color="primary" label="Register" type="submit" />
+            <q-btn class="q-mt-xl" style="margin-right: 10px;" color="primary" label="Register" type="submit" @click="validateAndSubmit" />
             <q-btn class="q-mt-xl" color="dark" label="Back to Login" unelevated to="/" @click="goToLogin" />
         </div>
     </div>
-    
-
 </q-page>
 </template>
 
 <script>
 import { required } from 'vuelidate/lib/validators'
 import { Notify } from 'quasar'
+
 
 
 export default {
@@ -46,9 +45,17 @@ export default {
             return this.$$route.params.id;
         }
     },
+    mounted(){
+    },
     methods: {
-        refreshRegisterDetails(){
-            
+        async validateAndSubmit(){
+            let res = await axios.post("/user", {
+                firstname: this.firstname,
+                lastname: this.lastname,
+                email: this.email,
+                password: this.password,
+            })
+            this.$router.push('/user')  
         }
     }
 }
